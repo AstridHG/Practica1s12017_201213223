@@ -5,6 +5,12 @@
  */
 package practica1_edd;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Astrid Hernandez
@@ -39,8 +45,18 @@ public class Inicio extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Buscar Archivo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Leer archivo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,6 +86,38 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String aux = "";
+        String tex ="" ;
+       try{
+           JFileChooser file = new JFileChooser();
+           file.showOpenDialog(this);
+           File abre= file.getSelectedFile();
+           if(abre !=null){
+               FileReader archi = new FileReader(abre);
+               jTextArea1.setText(tex);
+               BufferedReader leer = new BufferedReader(archi);
+               while((aux=leer.readLine())!=null){
+                   tex += aux+ "\n";
+               }
+               leer.close();
+           }
+           }
+       catch(IOException ex){
+                 
+       
+       
+               
+       }
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Usuario usuario = new Usuario();
+        usuario.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
