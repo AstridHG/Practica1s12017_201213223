@@ -25,8 +25,8 @@ public void CrearImg(){
       
       String dotPath = "C:\\release\\bin\\dot.exe";
       
-      String fileInputPath = "C:\\release\\ejemplos2\\ejemplo2.txt";
-      String fileOutputPath = "C:\\release\\ejemplos2\\ejemplo2.png";
+      String fileInputPath = "C:\\release\\EDD\\Eje.txt";
+      String fileOutputPath = "C:\\release\\EDD\\Eje.png";
       
       String tParam = "-Tjpg";
       String tOParam = "-o";
