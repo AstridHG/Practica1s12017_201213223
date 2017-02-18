@@ -5,25 +5,21 @@
  */
 package practica1_edd;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import javax.swing.JFileChooser;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.jdom2.Document;
+import org.jdom2.Element;
 
-/**
- *
- * @author Astrid Hernandez
- */
+
 public class Inicio extends javax.swing.JFrame {
+ListaNodo primero;
 
-    /**
-     * Creates new form Inicio
-     */
+   
     public Inicio() {
         initComponents();
     }
-
+ private String nombre;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,31 +84,43 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String aux = "";
-        String tex ="" ;
-       try{
-           JFileChooser file = new JFileChooser();
-           file.showOpenDialog(this);
-           File abre= file.getSelectedFile();
-           if(abre !=null){
-               FileReader archi = new FileReader(abre);
-               jTextArea1.setText(tex);
-               BufferedReader leer = new BufferedReader(archi);
-               while((aux=leer.readLine())!=null){
-                   tex += aux+ "\n";
-               }
-               leer.close();
-           }
-           }
-       catch(IOException ex){
+IngresarPalabra();     
                  
        
+      
        
-               
-       }
+       
        
     }//GEN-LAST:event_jButton1ActionPerformed
+  
+    public void leerarchivo(){
+         
+     
+        
+    }
+    //cambiarla cuando lea archivo
+    public void IngresarPalabra(){
+        
+         ListaNodo palabra = new ListaNodo(jTextArea1.getText());
+       if(primero == null){
+           primero = palabra;
+             System.out.println("palabra" +palabra.palabra);
+       }else{
+           primero.siguiente = palabra;
+       
+       
+           System.out.println("palabrasig" +palabra.palabra);
+          
+       }
+        
+    }
+    
 
+        
+        
+        
+    
+     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Usuario usuario = new Usuario();

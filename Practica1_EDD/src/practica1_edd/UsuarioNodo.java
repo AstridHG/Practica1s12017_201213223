@@ -11,18 +11,22 @@ package practica1_edd;
  */
 public class UsuarioNodo {
     UsuarioNodo siguiente;
-    UsuarioNodo anterior;
+    
     String nombre;
+    public Cola Cletras;
     
     public UsuarioNodo (){
     siguiente = null;
-    anterior = null;
+   
     nombre = null;
+    Cletras=null;
 }
-    public UsuarioNodo(String nom){
+    public UsuarioNodo(String nom ){
         nombre = nom;
-        anterior = null;
+        
                 siguiente=null;
+                
+                
     }
 }
 

@@ -5,6 +5,10 @@
  */
 package practica1_edd;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author Astrid Hernandez
@@ -14,6 +18,7 @@ public class Usuario extends javax.swing.JFrame {
     UsuarioNodo primero;
     UsuarioNodo ultimo;
     int contador;
+    Cola Letraentrega = null;
     
     public void IngresarUsuario(){
         UsuarioNodo nombre = new UsuarioNodo(jTextField1.getText());
@@ -22,11 +27,13 @@ public class Usuario extends javax.swing.JFrame {
         ultimo = nombre;
         
         // jTextArea1.setText(nombre.nombre);
+        System.out.println("nomb"+nombre.nombre);
     }   else {
        ultimo.siguiente= nombre;
              ultimo= nombre;
                ultimo.siguiente=null; //cambiar a primero
               // jTextArea1.setText(nombre.nombre);
+               System.out.println("nombres"+nombre.nombre);
              
     } 
    
@@ -82,7 +89,7 @@ public class Usuario extends javax.swing.JFrame {
              texArchivo = texArchivo + bandera.nombre;
              
         } else if(bandera== ultimo){
-            texArchivo = texArchivo +"->"+ bandera.nombre+";\n";
+            texArchivo = texArchivo +"->"+ bandera.nombre+"->"+primero.nombre+";\n";
             
        }
     else{
@@ -93,8 +100,21 @@ public class Usuario extends javax.swing.JFrame {
     }while(bandera != null);
      texArchivo = texArchivo + "}";
     // jTextArea1.setText(texArchivo);
+     
+     try{
+         File archi = new File("C:\\release\\EDD\\Jugadores.txt");
+         FileWriter fw = new FileWriter(archi,true);
+         fw.write(texArchivo);
+         fw.close();
+         
+     }catch(IOException ex){
     }
-    
+     
+    }
+    public void RandomCola(){
+        //hacer el random para llenar cola
+      
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,6 +130,7 @@ public class Usuario extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,6 +161,13 @@ public class Usuario extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,20 +176,22 @@ public class Usuario extends javax.swing.JFrame {
                 .addContainerGap(120, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(55, 55, 55)))
-                        .addGap(146, 146, 146))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(59, 59, 59)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(119, 119, 119))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButton1)
+                                    .addGap(55, 55, 55))))
+                        .addGap(146, 146, 146))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +204,9 @@ public class Usuario extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(9, 9, 9)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -183,7 +215,8 @@ public class Usuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-IngresarUsuario();       
+IngresarUsuario();      
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -193,6 +226,10 @@ IngresarUsuario();
   Tablero tablero= new Tablero();
   tablero.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        DiagramaArchivo();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,6 +269,7 @@ IngresarUsuario();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
