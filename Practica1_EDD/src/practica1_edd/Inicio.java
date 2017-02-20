@@ -5,16 +5,27 @@
  */
 package practica1_edd;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.jdom2.Document;
-import org.jdom2.Element;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 public class Inicio extends javax.swing.JFrame {
 ListaNodo primero;
-
+  int contador;
    
     public Inicio() {
         initComponents();
@@ -33,6 +44,8 @@ ListaNodo primero;
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,20 +67,39 @@ ListaNodo primero;
             }
         });
 
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("jButton4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(85, 85, 85))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(32, 32, 32))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +108,9 @@ ListaNodo primero;
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addGap(0, 14, Short.MAX_VALUE))
         );
 
@@ -84,7 +118,7 @@ ListaNodo primero;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-IngresarPalabra();     
+ 
                  
        
       
@@ -102,6 +136,7 @@ IngresarPalabra();
     public void IngresarPalabra(){
         
          ListaNodo palabra = new ListaNodo(jTextArea1.getText());
+      
        if(primero == null){
            primero = palabra;
              System.out.println("palabra" +palabra.palabra);
@@ -113,9 +148,42 @@ IngresarPalabra();
           
        }
         
+       
+       
+       
+    
+       
+       
     }
     
-
+public void EscribirArchi(){
+    String texArchivo = "digraph ListaJugadores"+contador +"{\n";
+    ListaNodo bandera = new ListaNodo();
+    bandera = primero;
+    do{
+         if(bandera== primero){
+           texArchivo = texArchivo+primero.palabra+";";
+            
+       }
+    else{
+             texArchivo = texArchivo +"->"+ bandera.palabra+";\n"+bandera.palabra;
+        }
+            
+       bandera = bandera.siguiente;
+    }while(bandera != null);
+     texArchivo = texArchivo + "}";
+    // jTextArea1.setText(texArchivo);
+     
+     try{
+         File archi = new File("C:\\release\\EDD\\Palabras.txt");
+         FileWriter fw = new FileWriter(archi,true);
+         fw.write(texArchivo);
+         fw.close();
+         
+     }catch(IOException ex){
+    }
+     
+    }
         
         
         
@@ -126,6 +194,51 @@ IngresarPalabra();
         Usuario usuario = new Usuario();
         usuario.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        EscribirArchi();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("XML FILES", "xml");
+        fileChooser.setFileFilter(filter);
+        fileChooser.showOpenDialog(null);
+
+        File texto = fileChooser.getSelectedFile();
+
+        try {
+            DocumentBuilderFactory factoria = DocumentBuilderFactory.newInstance();
+            DocumentBuilder Builder = factoria.newDocumentBuilder();
+            Document doc = Builder.parse(texto);
+            doc.getDocumentElement().normalize();
+            NodeList lisDi = doc.getElementsByTagName("diccionario");
+            Node node = lisDi.item(0);
+            Element palabras = (Element) node;
+            NodeList lPalabra = palabras.getElementsByTagName("palabra");
+//-----------------------------------------------------------------------------
+             NodeList lisDimension = doc.getElementsByTagName("dimension");
+             Node nodo = lisDimension.item(0);
+             Element dimen =(Element)nodo;
+             NodeList ldimen = dimen.getElementsByTagName("dimension");
+             
+            for (int i = 0; i < lPalabra.getLength(); i++) {
+                Node palabra = lPalabra.item(i);
+                Element elemento = (Element) palabra;
+           
+                System.out.println("Palabra: " + elemento.getTextContent());
+            }
+            
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            System.out.println("Error");
+        }
+            
+            
+            
+            
+      
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +278,8 @@ IngresarPalabra();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

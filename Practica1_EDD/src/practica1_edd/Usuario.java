@@ -19,6 +19,8 @@ public class Usuario extends javax.swing.JFrame {
     UsuarioNodo ultimo;
     int contador;
     Cola Letraentrega = null;
+    Cola inicioLetra = null;
+    Cola ultimaLetra = null;
     
     public void IngresarUsuario(){
         UsuarioNodo nombre = new UsuarioNodo(jTextField1.getText());
@@ -111,10 +113,29 @@ public class Usuario extends javax.swing.JFrame {
     }
      
     }
-    public void RandomCola(){
+    public void agregarLetra(Cola Letraactual){
+        if(inicioLetra == null){
+            inicioLetra = Letraactual;
+            ultimaLetra = Letraactual;
+            
+        }else{
+            ultimaLetra.siguiente = Letraactual;
+            ultimaLetra = Letraactual;
+        }
+            
+        }
+    
+    
+    
+    public void RandomCola(int valor){
         //hacer el random para llenar cola
-      
-    }
+        int random=(int)(Math.random()*25)+1;
+        switch(random){
+            
+        }
+        }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

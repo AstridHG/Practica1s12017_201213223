@@ -15,23 +15,8 @@ public class ListaPalabras {
   
     
     public void Lista(){
-       /* ListaNodo palabra = new ListaNodo(jTextArea1.getText());
-       //if(primero == null){
-           primero = palabra;
-       }else{
-           primero.siguiente = palabra;
-           
-       }
-    }*/
-    
-   /* ListaPalabras(String palabra){
-        primero = new ListaNodo(palabra);
+   
         
-    }
-       public boolean Vacia()
-       {
-           return primero == null;
-       }*/
        
     }
     
