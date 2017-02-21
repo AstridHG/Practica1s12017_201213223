@@ -26,6 +26,8 @@ import org.w3c.dom.NodeList;
 public class Inicio extends javax.swing.JFrame {
 ListaNodo primero;
   int contador;
+  ListaNodo ultima;
+  
    
     public Inicio() {
         initComponents();
@@ -40,41 +42,27 @@ ListaNodo primero;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 255, 153));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jButton1.setText("Buscar Archivo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Leer archivo");
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
+        jButton2.setFont(new java.awt.Font("StateOfDreaming", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(204, 51, 0));
+        jButton2.setText("Ingresar Usuario");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("jButton4");
+        jButton4.setBackground(new java.awt.Color(0, 0, 0));
+        jButton4.setFont(new java.awt.Font("StateOfDreaming", 1, 18)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 0, 0));
+        jButton4.setText("Leer Archivo");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -86,46 +74,27 @@ ListaNodo primero;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
+                        .addGap(138, 138, 138)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(32, 32, 32))))
+                        .addGap(150, 150, 150)
+                        .addComponent(jButton4)))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
-                 
-       
-      
-       
-       
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
   
     public void leerarchivo(){
          
@@ -133,18 +102,20 @@ ListaNodo primero;
         
     }
     //cambiarla cuando lea archivo
-    public void IngresarPalabra(){
+    public void IngresarPalabra(ListaNodo palabras){
         
-         ListaNodo palabra = new ListaNodo(jTextArea1.getText());
-      
+              
        if(primero == null){
-           primero = palabra;
-             System.out.println("palabra" +palabra.palabra);
+           primero = ultima=palabras;
+           //ultima=palabras;
+             System.out.println("Palabra en Listad:" +palabras.palabra);
        }else{
-           primero.siguiente = palabra;
+           ultima.siguiente = palabras;
+           ultima=palabras;
+           ultima.siguiente=null;
        
        
-           System.out.println("palabrasig" +palabra.palabra);
+           System.out.println("Palabra en Lista:" +palabras.palabra);
           
        }
         
@@ -157,17 +128,23 @@ ListaNodo primero;
     }
     
 public void EscribirArchi(){
-    String texArchivo = "digraph ListaJugadores"+contador +"{\n";
+    String texArchivo = "digraph ListaPalabras"+contador +"{\n";
     ListaNodo bandera = new ListaNodo();
     bandera = primero;
     do{
-         if(bandera== primero){
-           texArchivo = texArchivo+primero.palabra+";";
+         if(bandera== primero && bandera == ultima){
+           texArchivo = texArchivo+bandera.palabra+";";
             
        }
-    else{
-             texArchivo = texArchivo +"->"+ bandera.palabra+";\n"+bandera.palabra;
+         else if (bandera == primero){
+             texArchivo = texArchivo + bandera.palabra;
         }
+         else if(bandera == ultima){
+             texArchivo=texArchivo+"->"+bandera.palabra+";";
+         }
+         else{
+             texArchivo=texArchivo+"->"+bandera.palabra+";"+bandera.palabra;
+         }
             
        bandera = bandera.siguiente;
     }while(bandera != null);
@@ -193,11 +170,8 @@ public void EscribirArchi(){
         // TODO add your handling code here:
         Usuario usuario = new Usuario();
         usuario.setVisible(true);
+            EscribirArchi();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        EscribirArchi();
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -213,22 +187,38 @@ public void EscribirArchi(){
             DocumentBuilder Builder = factoria.newDocumentBuilder();
             Document doc = Builder.parse(texto);
             doc.getDocumentElement().normalize();
+ //-------------------------------------------------------          
+          NodeList lisDimension = doc.getElementsByTagName("dimension");
+          for(int i=0;i<lisDimension.getLength();i++){  
+          Node nodo = lisDimension.item(i);
+             Element dimen =(Element)nodo;
+            // NodeList ldimen = dimen.getElementsByTagName("dimension");   
+          System.out.println("Dimen"+dimen.getTextContent());
+          }
+            
+            
+//-----------------------------------------------------------            
             NodeList lisDi = doc.getElementsByTagName("diccionario");
             Node node = lisDi.item(0);
             Element palabras = (Element) node;
             NodeList lPalabra = palabras.getElementsByTagName("palabra");
-//-----------------------------------------------------------------------------
-             NodeList lisDimension = doc.getElementsByTagName("dimension");
-             Node nodo = lisDimension.item(0);
-             Element dimen =(Element)nodo;
-             NodeList ldimen = dimen.getElementsByTagName("dimension");
-             
+
             for (int i = 0; i < lPalabra.getLength(); i++) {
                 Node palabra = lPalabra.item(i);
                 Element elemento = (Element) palabra;
+                ListaNodo varpal = new ListaNodo(elemento.getTextContent());
+           IngresarPalabra(varpal);
            
                 System.out.println("Palabra: " + elemento.getTextContent());
             }
+            //-------------------------------------------------
+            
+            
+             
+            
+            
+            
+            
             
         } catch (ParserConfigurationException | SAXException | IOException e) {
             System.out.println("Error");
@@ -276,11 +266,7 @@ public void EscribirArchi(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,6 +18,8 @@ public class Tablero extends javax.swing.JFrame {
     public Tablero() {
         initComponents();
         CrearImg();
+        CrearImg2();
+       
     }
 public void CrearImg(){
    

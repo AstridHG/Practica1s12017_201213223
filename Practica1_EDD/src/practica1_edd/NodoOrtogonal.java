@@ -11,13 +11,14 @@ package practica1_edd;
  */
 public class NodoOrtogonal {
     
-    int posx,posy;
-    String dato;
+   
+    int dimension;
     
   NodoOrtogonal arriba;
   NodoOrtogonal abajo;
   NodoOrtogonal izquierda;
   NodoOrtogonal derecha;
+
 
   
  public NodoOrtogonal(){
@@ -25,13 +26,16 @@ public class NodoOrtogonal {
       abajo=null;
       izquierda=null;
       derecha = null;
+      
+   
  }
-      public NodoOrtogonal(String dato, int x , int y){
+     /* public NodoOrtogonal(String dato, int x , int y){
        this.dato=dato;
        this.posx=x;
        this.posy=y;
-       
-      }
+      */ 
+
+    
       
     
   }
