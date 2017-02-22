@@ -1,10 +1,18 @@
 package practica1_edd;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.TransferHandler;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -83,10 +91,61 @@ public class Tablero extends javax.swing.JFrame {
         initComponents();
      //  CrearImg();
     //   CrearImg2();
-      
+      //turno();
  agrCola();
- //turno();
+ 
+ 
+jLabel3.setBounds(14, 34,14 ,34);
+jLabel4.setBounds(14,34,14,34);
+jLabel5.setBounds(14, 34,14 ,34);
+jLabel6.setBounds(14,34,14,34);
+jLabel7.setBounds(14, 34,14 ,34);
+jLabel8.setBounds(14,34,14,34);
+jLabel9.setBounds(14, 34,14 ,34);
 
+ MouseListener ml = new MouseListener() {
+
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+               JComponent jc = (JComponent)me.getSource();
+               TransferHandler th = jc.getTransferHandler();
+               th.exportAsDrag(jc, me, TransferHandler.COPY);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+               
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+               }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                
+            }
+        };
+ 
+jLabel3.addMouseListener(ml);
+jLabel3.setTransferHandler(new TransferHandler("text"));
+jLabel4.addMouseListener(ml);
+jLabel4.setTransferHandler(new TransferHandler("text"));
+jLabel5.addMouseListener(ml);
+jLabel5.setTransferHandler(new TransferHandler("text"));
+jLabel6.addMouseListener(ml);
+jLabel6.setTransferHandler(new TransferHandler("text"));
+jLabel7.addMouseListener(ml);
+jLabel7.setTransferHandler(new TransferHandler("text"));
+jLabel8.addMouseListener(ml);
+jLabel8.setTransferHandler(new TransferHandler("text"));
+jLabel9.addMouseListener(ml);
+jLabel9.setTransferHandler(new TransferHandler("text"));
     }
 public void CrearImg(){
    
@@ -158,20 +217,7 @@ public void crear(int dimension){
         }
 }
 
-/*public void turno(){
-    jTextField1.setText("");
-    Usuario usu = new Usuario();
-   jLabel3.setText(usu.primero.nombre);
-    UsuarioNodo turno = new UsuarioNodo();
-    while(turno != null){
-        if(turno == usu.ultimo){
-           jTextField1.setText(jTextField1.getText()+turno.nombre);
-            break;
-        }else{
-           turno = turno.siguiente; 
-        }
-    }
-}*/
+
     /**(
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -191,6 +237,15 @@ public void crear(int dimension){
         jScrollPane3 = new javax.swing.JScrollPane();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 204));
@@ -203,22 +258,27 @@ public void crear(int dimension){
             }
         });
 
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
+
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Astrid Hernandez\\Documents\\GitHub\\Practica1s12017_201213223\\Practica1_EDD\\src\\practica1_edd\\Imagenes\\Palabras.png")); // NOI18N
-        jLabel1.setText("jLabel1");
         jScrollPane1.setViewportView(jLabel1);
 
-        jTabbedPane1.addTab("tab1", jScrollPane1);
+        jTabbedPane1.addTab("Lista Palabras", jScrollPane1);
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Astrid Hernandez\\Documents\\GitHub\\Practica1s12017_201213223\\Practica1_EDD\\src\\practica1_edd\\Imagenes\\Jugadores.png")); // NOI18N
         jScrollPane2.setViewportView(jLabel2);
 
-        jTabbedPane1.addTab("tab2", jScrollPane2);
+        jTabbedPane1.addTab("Lista Jugador", jScrollPane2);
 
         jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Astrid Hernandez\\Documents\\GitHub\\Practica1s12017_201213223\\Practica1_EDD\\src\\practica1_edd\\Imagenes\\Cola.png")); // NOI18N
         jLabel10.setText("jLabel10");
         jScrollPane3.setViewportView(jLabel10);
 
-        jTabbedPane1.addTab("tab3", jScrollPane3);
+        jTabbedPane1.addTab("Cola", jScrollPane3);
 
         jButton1.setText("Crear Imagen");
         jButton1.setActionCommand("CrearCola");
@@ -228,30 +288,96 @@ public void crear(int dimension){
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(204, 255, 204));
+        jLabel3.setText("jLabel3");
+
+        jLabel4.setText("jLabel4");
+
+        jLabel5.setText("jLabel5");
+
+        jLabel6.setText("jLabel6");
+
+        jLabel7.setText("jLabel7");
+
+        jLabel8.setText("jLabel8");
+
+        jLabel9.setText("jLabel9");
+
+        jLabel11.setText("jLabel11");
+
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(314, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(88, 88, 88)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel9))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jLabel7))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jLabel4)))))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(88, 88, 88))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(105, 105, 105))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(97, 97, 97)))))
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(32, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabel11)
+                        .addGap(33, 33, 33)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton8)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addGap(25, 25, 25))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))))
+                .addGap(11, 11, 11)
+                .addComponent(jLabel9))
         );
 
         pack();
@@ -267,16 +393,35 @@ public void crear(int dimension){
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        DiagramaArchivo();
-        CrearImgCola();
-        this.setVisible(true);
+     
+            // TODO add your handling code here:
+            
+            DiagramaArchivo();
+            CrearImgCola();
+            
+            
+            
+            
         
-       
-       
                 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+    int tab=0;
+        switch(tab){
+            case 0:
+                
+      tab = jTabbedPane1.getSelectedIndex();
+    
+        break;
+            case 1:
+                tab = jTabbedPane1.getSelectedIndex();
+            break;    
+            case 2:
+                tab = jTabbedPane1.getSelectedIndex();
+                break;
+    }   // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
      public void agregarLetra(Cola Letraactual, int ingreso){
         if(inicioLetra == null){
@@ -523,7 +668,7 @@ public void recorrerCola(){
 }
 
 public void sacarCola(){
-   
+   Usuario usu = new Usuario();
     colasale = inicioLetra;
     Cola nuevo = new Cola();
     nuevo = inicioLetra.siguiente;
@@ -532,7 +677,15 @@ public void sacarCola(){
     
         recorrerCola();
     System.out.println("sale"+nuevo.letra);
-      //jLabel4.setText(nuevo.letra);
+      jLabel3.setText(nuevo.letra);
+     
+      jLabel4.setText(nuevo.siguiente.letra);
+            jLabel5.setText(nuevo.siguiente.siguiente.letra);
+             jLabel6.setText(nuevo.siguiente.siguiente.siguiente.letra);
+              jLabel7.setText(nuevo.siguiente.siguiente.siguiente.siguiente.letra);
+               jLabel8.setText(nuevo.siguiente.siguiente.siguiente.siguiente.siguiente.letra);
+                jLabel9.setText(nuevo.siguiente.siguiente.siguiente.siguiente.siguiente.siguiente.letra);
+            
     
 }
  public void DiagramaArchivo(){
@@ -558,7 +711,7 @@ public void sacarCola(){
        bandera = bandera.siguiente;
     }while(bandera != null);
      texArchivo = texArchivo + "}";
-    // jTextArea1.setText(texArchivo);
+   // jTextArea1.setText(texArchivo);
      
      try{
          File archi = new File("C:\\release\\EDD\\Cola.txt");
@@ -640,11 +793,20 @@ public void sacarCola(){
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

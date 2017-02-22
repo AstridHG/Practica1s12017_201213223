@@ -17,6 +17,8 @@ public class Usuario extends javax.swing.JFrame {
 
     UsuarioNodo primero;
     UsuarioNodo ultimo;
+   
+    
     int contador;
     Cola Letraentrega = null;
     Cola inicioLetra = null;
