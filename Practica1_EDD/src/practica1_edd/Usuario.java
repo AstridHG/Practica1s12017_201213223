@@ -21,6 +21,60 @@ public class Usuario extends javax.swing.JFrame {
     Cola Letraentrega = null;
     Cola inicioLetra = null;
     Cola ultimaLetra = null;
+    Cola colasale = new Cola();
+    int cA=12;
+    int ca=0;
+    int cB=2;
+    int cb=0;
+    int cC=4;
+    int cc=0;
+    int cD=5;
+     int cd=0;
+    int cE=12;
+     int ce=0;
+    int cF=1;
+     int cf=0;
+    int cG=2;
+     int cg=0;
+    int cH=2;
+     int ch=0;
+    int cI=6;
+     int ci=0;
+    int cJ=1;
+     int cj=0;
+   
+    int cL=4;
+     int cl=0;
+    int cM=2;
+     int cm=0;
+    int cN=5;
+     int cn=0;
+      int cÑ=1;
+     int cñ=0;
+    int cO=9;
+     int co=0;
+    int cP=2;
+     int cp=0;
+    int cQ=1;
+     int cq=0;
+    int cR=5;
+     int cr=0;
+    int cS=6;
+     int cs=0;
+    int cT=4;
+     int ct=0;
+    int cU=5;
+     int cu=0;
+    int cV=1;
+     int cv=0;
+  
+    int cX=1;
+     int cx=0;
+   int cY=1;
+   int cy = 0;
+    int cZ=1;
+     int cz=0;
+    
     
 
    
@@ -118,7 +172,7 @@ public class Usuario extends javax.swing.JFrame {
     }
      
     }
-    public void agregarLetra(Cola Letraactual){
+    public void agregarLetra(Cola Letraactual, int ingreso){
         if(inicioLetra == null){
             inicioLetra = Letraactual;
             ultimaLetra = Letraactual;
@@ -136,12 +190,245 @@ public class Usuario extends javax.swing.JFrame {
         //hacer el random para llenar cola
         int random=(int)(Math.random()*25)+1;
         switch(random){
-            
+            case 1:
+                if(ca<cA){
+                   Cola la = new Cola("A",1);
+                 agregarLetra(la,valor);
+                 ca++;
+                 
+                }
+            break;
+            case 2:
+            if(cb<cB){
+                   Cola lb = new Cola("B",3);
+                 agregarLetra(lb,valor);
+                 cb++;
+                 
+                } 
+            break;
+            case 3:
+            if(cc<cC){
+                   Cola lc = new Cola("C",3);
+                 agregarLetra(lc,valor);
+                 cc++;
+                 
+                }
+            break;
+            case 4:
+                if(cd<cD){
+                   Cola ld = new Cola("D",2);
+                 agregarLetra(ld,valor);
+                 cd++;
+                 
+                }
+                break;
+            case 5:
+            if(ce<cE){
+                   Cola le = new Cola("E",1);
+                 agregarLetra(le,valor);
+                 ce++;
+                 
+                }
+            break;
+            case 6:
+                if(cf<cF){
+                   Cola lf = new Cola("F",4);
+                 agregarLetra(lf,valor);
+                 cf++;
+                 
+                }
+            break;
+            case 7:
+                if(cg<cG){
+                   Cola lg = new Cola("G",2);
+                 agregarLetra(lg,valor);
+                 cg++;
+                 
+                }
+            break;
+            case 8:
+                if(ch<cH){
+                   Cola lh = new Cola("H",4);
+                 agregarLetra(lh,valor);
+                 ch++;
+                 
+                }
+            break;
+            case 9:
+                if(ci<cI){
+                   Cola li = new Cola("I",1);
+                 agregarLetra(li,valor);
+                 ci++;
+                 
+                }
+            break;
+            case 10:
+                if(cj<cJ){
+                   Cola lj = new Cola("J",8);
+                 agregarLetra(lj,valor);
+                 cj++;
+                 
+                }
+            break;
+            case 11:
+                if(cl<cL){
+                   Cola ll = new Cola("L",1);
+                 agregarLetra(ll,valor);
+                 cl++;
+                 
+                }
+            break;
+            case 12:
+                if(cm<cM){
+                   Cola lm = new Cola("M",3);
+                 agregarLetra(lm,valor);
+                 cm++;
+                 
+                }
+            break;
+            case 13:
+                if(cn<cN){
+                   Cola ln = new Cola("N",1);
+                 agregarLetra(ln,valor);
+                 cn++;
+                 
+                }
+            break;
+                    case 14:
+                        if(cñ<cÑ){
+                   Cola lñ = new Cola("Ñ",8);
+                 agregarLetra(lñ,valor);
+                 cñ++;
+                 
+                }
+                    break;
+                    case 15:
+                        if(co<cO){
+                   Cola lo = new Cola("O",1);
+                 agregarLetra(lo,valor);
+                 co++;
+                 
+                }
+                   break;
+                    case 16:
+                        if(cp<cP){
+                   Cola lp = new Cola("P",3);
+                 agregarLetra(lp,valor);
+                 cp++;
+                 
+                }
+                    break;
+                    case 17:
+                        if(cq<cQ){
+                   Cola lq = new Cola("Q",5);
+                 agregarLetra(lq,valor);
+                 cq++;
+                 
+                }
+                    break;
+                    case 18:
+                        if(cr<cR){
+                   Cola lr = new Cola("R",1);
+                 agregarLetra(lr,valor);
+                 cr++;
+                 
+                }
+                    break;
+                    case 19:
+                        if(cs<cS){
+                   Cola ls = new Cola("S",1);
+                 agregarLetra(ls,valor);
+                 cs++;
+                 
+                }
+                    break;
+                    case 20:
+                        if(ct<cT){
+                   Cola lt = new Cola("T",1);
+                 agregarLetra(lt,valor);
+                 ct++;
+                 
+                }
+                    break;
+                    case 21:
+                        if(cu<cU){
+                   Cola lu = new Cola("U",1);
+                 agregarLetra(lu,valor);
+                 cu++;
+                 
+                }
+                    break;
+                    case 22:
+                        if(cv<cV){
+                   Cola lv = new Cola("V",4);
+                 agregarLetra(lv,valor);
+                 cv++;
+                 
+                }
+                    break;
+                    case 23:
+                        if(cx<cX){
+                   Cola lx = new Cola("X",8);
+                 agregarLetra(lx,valor);
+                 cx++;
+                 
+                }
+                    break;
+                    case 24:
+                        if(cy<cY){
+                   Cola ly = new Cola("Y",4);
+                 agregarLetra(ly,valor);
+                 cy++;
+                 
+                }
+                    break;
+                    case 25:
+                        if(cz<cZ){
+                   Cola lz = new Cola("Z",10);
+                 agregarLetra(lz,valor);
+                 cz++;
+                 
+                }
+                    break;
+                    default:
+                        break;
         }
         }
-
     
+    
+public void agrCola(){
+    for(int valor = 1; valor<96;valor++){
+       RandomCola(valor);
+     
+    }
+}
+public void recorrerCola(){
+    int conta = 1;
+    Cola aux = new Cola();
+    aux=inicioLetra;
+    do{
+        
+    aux=aux.siguiente;
+    conta++;
+        
+    } while(aux != ultimaLetra.siguiente);
+    System.out.println("tantas letras"+conta);
+ 
 
+}
+
+public void sacarCola(){
+    colasale = inicioLetra;
+    Cola nuevo = new Cola();
+    nuevo = inicioLetra.siguiente;
+    inicioLetra=nuevo;
+    recorrerCola();
+    
+        recorrerCola();
+    System.out.println("sale"+nuevo.letra);
+       
+
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -190,7 +477,7 @@ public class Usuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(120, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -238,9 +525,15 @@ IngresarUsuario();
       // buscar(jTextField1.getText());
 //DiagramaArchivo();
   Tablero tablero= new Tablero();
-  tablero.setVisible(true);
-   DiagramaArchivo();
+ 
+
+ tablero.CrearImg();
+  DiagramaArchivo();
+   tablero.setVisible(true);
+ 
+
    
+  
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

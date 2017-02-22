@@ -13,20 +13,27 @@ public class NodoOrtogonal {
     
    
     int dimension;
-    
+    int posx;
+    int posy;
+    String dato;
   NodoOrtogonal arriba;
   NodoOrtogonal abajo;
   NodoOrtogonal izquierda;
   NodoOrtogonal derecha;
 
-
-  
- public NodoOrtogonal(){
-      arriba= null;
+/*public NodoOrtogonal(){
+     arriba= null;
       abajo=null;
       izquierda=null;
       derecha = null;
+}*/
+ public NodoOrtogonal(int posx, int posy, String dato){
+     
+      this.posx=posx;
+      this.posy=posy;
+      this.dato=dato;
       
+ 
    
  }
      /* public NodoOrtogonal(String dato, int x , int y){

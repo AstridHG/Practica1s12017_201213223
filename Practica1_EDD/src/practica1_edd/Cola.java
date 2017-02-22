@@ -13,16 +13,19 @@ public class Cola {
     public Cola siguiente;
     public Cola anterior;
     public String letra;
+    public int puntos;
     
     public Cola(){
         letra = null;
         siguiente = null;
         anterior = null;
+        puntos=0;
         
     }
-    public Cola(String letran){
-        letra= letran;
+    public Cola(String letras,int punto){
+        letra= letras;
         siguiente=null;
         anterior = null;
+        puntos = punto;
     }
 }

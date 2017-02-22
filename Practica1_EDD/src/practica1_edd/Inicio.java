@@ -169,8 +169,11 @@ public void EscribirArchi(){
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Usuario usuario = new Usuario();
+        Tablero tablero = new Tablero();
         usuario.setVisible(true);
             EscribirArchi();
+            tablero.CrearImg2();
+     
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
